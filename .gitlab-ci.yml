@@ -1,0 +1,23 @@
+stages:
+  - build
+  - test
+
+build_job:
+  stage: build
+  tags:
+    - netology
+  script:
+    - echo "Building"
+    - mkdir -p build
+    - touch build/info.txt
+  artifacts:
+    paths:
+      - build/
+
+test_job:
+  stage: test
+  tags:
+    - netology
+  script:
+    - echo "Testing"
+    - test -f build/info.txt && echo "File build/info.txt exists!"
